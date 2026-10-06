@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OffRoad - Clientes</title>
+</head>
+
+<body>
+
+<h1>🏍️ Loja OffRoad</h1>
+
+<h2>Cadastro de Clientes</h2>
+
+<a href="/clientes/novo">Cadastrar novo cliente</a>
+
+<br><br>
+
+<table border="1" cellpadding="8">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>CPF</th>
+        <th>Telefone</th>
+        <th>Email</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="cliente : ${clientes}">
+
+        <td th:text="${cliente.id}"></td>
+        <td th:text="${cliente.nome}"></td>
+        <td th:text="${cliente.cpf}"></td>
+        <td th:text="${cliente.telefone}"></td>
+        <td th:text="${cliente.email}"></td>
+
+        <td>
+
+            <a th:href="@{/clientes/editar/{id}(id=${cliente.id})}">
+                Editar
+            </a>
+
+            |
+
+            <a th:href="@{/clientes/excluir/{id}(id=${cliente.id})}"
+               onclick="return confirm('Deseja realmente excluir este cliente?')">
+                Excluir
+            </a>
+
+        </td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+
+<br>
+
+<a href="/motos">Motos</a>
+
+<a href="/vendas">Vendas</a>
+
+</body>
+
+</html>

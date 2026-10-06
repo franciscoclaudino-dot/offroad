@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>OffRoad - Motos</title>
+</head>
+
+<body>
+
+<h1>🏍️ Loja OffRoad</h1>
+
+<h2>Cadastro de Motos</h2>
+
+<a href="/motos/novo">Cadastrar nova moto</a>
+
+<br><br>
+
+<table border="1" cellpadding="8">
+
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Ano</th>
+        <th>Cilindrada</th>
+        <th>Preço</th>
+        <th>Estoque</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+
+    <tbody>
+
+    <tr th:each="moto : ${motos}">
+
+        <td th:text="${moto.id}"></td>
+
+        <td th:text="${moto.marca}"></td>
+
+        <td th:text="${moto.modelo}"></td>
+
+        <td th:text="${moto.ano}"></td>
+
+        <td th:text="${moto.cilindrada} + ' cc'"></td>
+
+        <td th:text="${moto.preco}"></td>
+
+        <td th:text="${moto.estoque}"></td>
+
+        <td>
+
+            <a th:href="@{/motos/editar/{id}(id=${moto.id})}">
+                Editar
+            </a>
+
+            |
+
+            <a th:href="@{/motos/excluir/{id}(id=${moto.id})}"
+               onclick="return confirm('Deseja realmente excluir esta moto?')">
+
+                Excluir
+
+            </a>
+
+        </td>
+
+    </tr>
+
+    </tbody>
+
+</table>
+
+<br>
+
+<a href="/clientes">Clientes</a>
+
+<a href="/vendas">Vendas</a>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>OffRoad - Cadastro de Cliente</title>
+
+</head>
+
+<body>
+
+<h1>🏍️ Loja OffRoad</h1>
+
+<h2>Cadastro de Cliente</h2>
+
+
+<form th:action="@{/clientes/salvar}"
+      th:object="${cliente}"
+      method="post">
+
+
+    <!-- ID -->
+    <input type="hidden"
+           th:field="*{id}">
+
+
+    <!-- NOME -->
+    <label>Nome:</label>
+
+    <input type="text"
+           th:field="*{nome}">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('nome')}"
+          th:errors="*{nome}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- CPF -->
+    <label>CPF:</label>
+
+    <input type="text"
+           th:field="*{cpf}"
+           placeholder="000.000.000-00">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('cpf')}"
+          th:errors="*{cpf}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- TELEFONE -->
+    <label>Telefone:</label>
+
+    <input type="text"
+           th:field="*{telefone}"
+           placeholder="(87) 99999-9999">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('telefone')}"
+          th:errors="*{telefone}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- EMAIL -->
+    <label>Email:</label>
+
+    <input type="email"
+           th:field="*{email}"
+           placeholder="exemplo@email.com">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('email')}"
+          th:errors="*{email}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- BOTÃO -->
+    <button type="submit">
+        Salvar Cliente
+    </button>
+
+</form>
+
+
+<br>
+
+<a href="/clientes">
+    Voltar para clientes
+</a>
+
+</body>
+
+</html>

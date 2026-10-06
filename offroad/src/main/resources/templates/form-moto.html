@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>OffRoad - Cadastro de Moto</title>
+
+</head>
+
+<body>
+
+<h1>🏍️ Loja OffRoad</h1>
+
+<h2>Cadastro de Moto</h2>
+
+
+<form th:action="@{/motos/salvar}"
+      th:object="${moto}"
+      method="post">
+
+
+    <!-- ID -->
+    <input type="hidden"
+           th:field="*{id}">
+
+
+    <!-- MARCA -->
+    <label>Marca:</label>
+
+    <input type="text"
+           th:field="*{marca}"
+           placeholder="Honda">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('marca')}"
+          th:errors="*{marca}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- MODELO -->
+    <label>Modelo:</label>
+
+    <input type="text"
+           th:field="*{modelo}"
+           placeholder="CRF 230">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('modelo')}"
+          th:errors="*{modelo}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- ANO -->
+    <label>Ano:</label>
+
+    <input type="number"
+           th:field="*{ano}"
+           placeholder="2025">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('ano')}"
+          th:errors="*{ano}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- CILINDRADA -->
+    <label>Cilindrada:</label>
+
+    <input type="number"
+           th:field="*{cilindrada}"
+           placeholder="230">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('cilindrada')}"
+          th:errors="*{cilindrada}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- PREÇO -->
+    <label>Preço:</label>
+
+    <input type="number"
+           step="0.01"
+           th:field="*{preco}"
+           placeholder="25000.00">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('preco')}"
+          th:errors="*{preco}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <!-- ESTOQUE -->
+    <label>Estoque:</label>
+
+    <input type="number"
+           th:field="*{estoque}"
+           placeholder="5">
+
+    <br>
+
+    <span th:if="${#fields.hasErrors('estoque')}"
+          th:errors="*{estoque}"
+          style="color:red; font-weight:bold;">
+    </span>
+
+    <br><br>
+
+
+    <button type="submit">
+        Salvar Moto
+    </button>
+
+</form>
+
+
+<br>
+
+<a href="/motos">
+    Voltar para lista de motos
+</a>
+
+</body>
+
+</html>
